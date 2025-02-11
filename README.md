@@ -87,6 +87,19 @@ I use the Catppuccin theme "Mocha", which can be found [here](https://github.com
 ---
 
 <!-- omit in toc -->
+#### [`cloc`](https://github.com/AlDanial/cloc)
+
+Installation:
+
+```bash
+winget install aldanial.cloc
+```
+
+`cloc`, which stands for "**c**ount **l**ines **o**f **c**ode", does just that: it counts the lines of source code, and splits this up into blank lines, comments and actual code. Has options to exclude certain directories and/or file types. Can also count the difference between two versions of a project.
+
+---
+
+<!-- omit in toc -->
 #### [`eza`](https://github.com/eza-community/eza)
 
 Installation:
