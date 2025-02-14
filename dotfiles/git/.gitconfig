@@ -1,0 +1,27 @@
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[user]
+	name = wnotermans
+	email = woutnotermans1@gmail.com
+[core]
+	editor = \"C:\\Users\\woutn\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+	pager = delta
+[gui]
+	recentrepo = E:/Thesis
+[interactive]
+    diffFilter = delta --color-only
+[include]
+    path = "C:\\Users\\woutn\\.config\\git\\catppuccin.gitconfig"
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+	line-numbers = true
+	hyperlinks = true
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+	side-by-side = true
+	features = catppuccin-mocha
+[merge]
+    conflictstyle = zdiff3

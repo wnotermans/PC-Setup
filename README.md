@@ -46,7 +46,7 @@ winget install --id Microsoft.PowerShell --source winget
 
 PowerShell uses commands that are quite distinct from Unix commands, though helpfully a lot of aliases (`ls`,`cd`,`cat`,`cls`,...) are built-in right out of the box. You can get a list of all aliases by simply running `alias` in PowerShell.
 
-To modify certain aspects of PowerShell, it is helpful to use the `$profile` file. Running `$profile` prints out the location of the file, and running e.g. `notepad $profile` or `code $profile` (VSCode) allows you to quickly open it up in an editor. This profile runs at start-up, so put all set-up and functions that you always want available in here. My `$profile` can be found [here](dotfiles/$profile.ps1). I set the autocomplete to list view with `Set-PSReadLineOption -PredictionViewStyle ListView`, as by default the autocomplete only shows one result. This can always be changed by pressing F2. Next, I provide some more Unix parity:
+To modify certain aspects of PowerShell, it is helpful to use the `$profile` file. Running `$profile` prints out the location of the file, and running e.g. `notepad $profile` or `code $profile` (VSCode) allows you to quickly open it up in an editor. This profile runs at start-up, so put all set-up and functions that you always want available in here. My `$profile` can be found [here](dotfiles/powershell/$profile.ps1). I set the autocomplete to list view with `Set-PSReadLineOption -PredictionViewStyle ListView`, as by default the autocomplete only shows one result. This can always be changed by pressing F2. Next, I provide some more Unix parity:
 
 ```powershell
 function touch { $null > $args }
@@ -79,7 +79,7 @@ function cat { bat $args }
 function catd { bat --diff $args }
 ```
 
-I use the Catppuccin theme "Mocha", which can be found [here](https://github.com/catppuccin/bat). The installation instructions can be found there as well. My config file can be [here](dotfiles/batconfig). I opt for the "full" style to also see file size and such.
+I use the Catppuccin theme "Mocha", which can be found [here](https://github.com/catppuccin/bat). The installation instructions can be found there as well. My config file can be [here](dotfiles/bat/batconfig). I opt for the "full" style to also see file size and such.
 
 > [!CAUTION]
 > Rename `batconfig` to just `config` if you decide to download it.
@@ -96,6 +96,19 @@ winget install aldanial.cloc
 ```
 
 `cloc`, which stands for "**c**ount **l**ines **o**f **c**ode", does just that: it counts the lines of source code, and splits this up into blank lines, comments and actual code. Has options to exclude certain directories and/or file types. Can also count the difference between two versions of a project.
+
+---
+
+<!-- omit in toc -->
+#### [`delta`](https://github.com/dandavison/delta)
+
+Installation:
+
+```bash
+winget install dandavison.delta
+```
+
+`delta` is a syntax highlighter and pager for git, diff,... Requires [`bat`](#bat) and [`less`](#less) to function properly. As always, I use the [Catppuccin Mocha theme](https://github.com/catppuccin/delta). Allows for much better quick command line viewing of git commits, diffs,... through e.g. `git show` or `git diff`. Features line numbers, side-by-side, and also VSCode hyperlinks! Pretty neat thing. See also [my `.gitconfig`](dotfiles/git/.gitconfig) and the [theme file](dotfiles/delta/catppuccin.gitconfig).
 
 ---
 
@@ -118,7 +131,7 @@ function lst { eza --header --bytes --long --icons=always --git --classify=alway
 $env:EZA_CONFIG_DIR = "$env:USERPROFILE\.config\eza"
 ```
 
-The additional arguments are how I like them best, these can of course be changed. To edit the [theme](https://github.com/eza-community/eza-themes), create the folder `\.config\eza` in `$env:USERPROFILE` if it doesn't exist yet, and place a `theme.yml` inside of it. I use the [Catppuccin](dotfiles/catppuccin.yml) theme.
+The additional arguments are how I like them best, these can of course be changed. I use the [Catppuccin](dotfiles/eza/catppuccin.yml) theme.
 
 > [!CAUTION]
 > The filename needs to be `theme.yml`, otherwise the theme will not work. You will thus need to change the filename of the themes you find [here](https://github.com/eza-community/eza-themes).
@@ -134,7 +147,7 @@ Installation:
 winget install fzf
 ```
 
-`fzf` is a fuzzy line finder to search for files, history, git commits,... Prefix with a single quote (`'`) for exact matching. Has great integration with `bat` through the command
+`fzf` is a fuzzy line finder to search for files, history, git commits,... Prefix with a single quote (`'`) for exact matching. Has great integration with [`bat`](#bat) through the command
 
 ```bash
 fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"
@@ -153,7 +166,7 @@ winget install jftuga.less
 
 `less` is terminal pager. This allows one to view long files or output in a page-by-page manner, instead of just spamming the console full and having to scroll back manually. It also has handy built in features like search (`/` for forwards searching, `?` for backwards) and matching with `&`. Useful movement shortcuts are `g` for top of file, `G` for bottom, `f` for next page, `d` for next half page, `b` for previous page and `u` for previous half page.
 
-`bat` automatically uses less by default when printing files.
+[`bat`](#bat) automatically uses less by default when printing files.
 
 ---
 
@@ -166,7 +179,7 @@ Installation:
 winget install --id Starship.Starship
 ```
 
-Starship is a customizable prompt supporting multiple shells. By default, PowerShell it not exactly the most appealing shell. By using Starship, it not only looks nicer, but also provides a lot of information at a glance, such as git status, execution time, (virtual) environment,... Configuration options are limitless. My config can be found [here](dotfiles/starship.toml). The relevant `$profile` setup is the following:
+Starship is a customizable prompt supporting multiple shells. By default, PowerShell it not exactly the most appealing shell. By using Starship, it not only looks nicer, but also provides a lot of information at a glance, such as git status, execution time, (virtual) environment,... Configuration options are limitless. My config can be found [here](dotfiles/starship/starship.toml). The relevant `$profile` setup is the following:
 
 ```powershell
 Invoke-Expression (&starship init powershell)
