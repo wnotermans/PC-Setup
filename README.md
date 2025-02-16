@@ -225,13 +225,6 @@ Writing documentation is very important, and in Python I try to always write a d
 ---
 
 <!-- omit in toc -->
-#### [Black Formatter](https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter)
-
-A formatter for Python code. As simple as that.
-
----
-
-<!-- omit in toc -->
 #### [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner)
 
 Handy extension to run code (supports quite a number of languages) with a single shortcut (Ctrl+Alt+N by default). If you just need to run a program without anything else, this is a pretty quick way to do it. For something more involved, I use the command line.
@@ -263,13 +256,6 @@ Provides support for working with tabular data sets. If you work with pandas in 
 #### [Even Better TOML](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml)
 
 Support for TOML files, e.g. highlighting, validation, refactoring,...
-
----
-
-<!-- omit in toc -->
-#### [isort](https://marketplace.visualstudio.com/items?itemName=ms-python.isort)
-
-Import sorting for Python.
 
 ---
 
@@ -319,3 +305,10 @@ Several extensions provide Python support: [Pylance](https://marketplace.visuals
 #### [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 
 Makes CSV files a bit easier to read.
+
+---
+
+<!-- omit in toc -->
+#### [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
+
+Ruff is a linter and formatter for Python that replaces other tools like Black, isort, and flake8 and is also much faster than those tools to boot. Formatting is compatible with Black and isort.
