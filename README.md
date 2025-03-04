@@ -260,6 +260,13 @@ Support for TOML files, e.g. highlighting, validation, refactoring,...
 ---
 
 <!-- omit in toc -->
+#### [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
+
+Rainbow indicator for indentation level. I use the "light" mode that uses lines.
+
+---
+
+<!-- omit in toc -->
 #### [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
 
 Extension pack for Jupyter support.
