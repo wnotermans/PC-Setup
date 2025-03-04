@@ -5,15 +5,23 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 function touch { $null > $args }
 new-alias grep findstr
 
+# alias-functions
+function gitd { git diff $args }
+function gits { git status $args }
+
 # replace cat with bat
 remove-item alias:cat
 function cat { bat $args }
 function catd { bat --diff $args }
 
+# replace diff with git diff (much nicer in combination with delta and bat)
+remove-item -Force alias:diff
+function diff($1, $2) { git diff --no-index $1 $2}
+
 # replace ls with eza
 remove-item alias:ls
 function ls { eza --header --bytes --long --icons=always --git --classify=always --group-directories-first --no-time --no-permissions $args }
-function lst { eza --header --bytes --long --icons=always --git --classify=always --group-directories-first --no-time --no-permissions --tree --level=2 $args }
+function lst($1) {$lvl = [math]::max(2,$1); eza --header --bytes --long --icons=always --git --classify=always --group-directories-first --no-time --no-permissions --tree --level=$lvl $args }
 $env:EZA_CONFIG_DIR = "$env:USERPROFILE\.config\eza"
 
 # starship setup
