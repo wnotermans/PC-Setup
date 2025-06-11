@@ -29,7 +29,7 @@ Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$env:USERPROFILE\.config\starship\starship.toml"
 
 # yt-dlp functions to download music from youtube
-function dlp { yt-dlp --extract-audio --audio-format mp3 --audio-quality 128k --embed-thumbnail --embed-metadata --parse-metadata "%(release_year)s0823:%(upload_date)s" --output "%(title)s.%(ext)s" $args }
-function dlpl { yt-dlp --extract-audio --audio-format mp3 --audio-quality 128k --embed-thumbnail --embed-metadata --parse-metadata "%(release_year)s0823:%(upload_date)s" --yes-playlist --output "%(title)s.%(ext)s" $args }
+function dlp { yt-dlp --extract-audio --audio-format mp3 --audio-quality 128k --embed-thumbnail --parse-metadata "%(release_year)s0823:%(upload_date)s" --add-metadata --embed-metadata --output "%(title)s.%(ext)s" $args }
+function dlpl { yt-dlp --extract-audio --audio-format mp3 --audio-quality 128k --embed-thumbnail --parse-metadata "%(release_year)s0823:%(upload_date)s" --parse-metadata "playlist_index:%(track_number)s" --add-metadata --embed-metadata --output "%(title)s.%(ext)s" $args }
 function dlp-nm { yt-dlp --extract-audio --audio-format mp3 --audio-quality 128k --embed-thumbnail --output "%(title)s.%(ext)s" $args }
 function dlpl-nm { yt-dlp --extract-audio --audio-format mp3 --audio-quality 128k --embed-thumbnail --yes-playlist --output "%(title)s.%(ext)s" $args }
